@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-/* header files */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,103 +11,84 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <errno.h>
+#include "macro.h"
 
-/* Global variable */
 extern char **environ;
 
-/* Macros */
-#define BUFSIZE 256
-#define TOKENSIZE 64
-#define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
-#define PROMPT "$ "
-#define SUCCESS (1)
-#define FAIL (-1)
-#define NEUTRAL (0)
-
-/* Struct */
 
 /**
- * struct sh_data - Global data structure
- * @line: the line input
- * @args: the arguments token
- * @error_msg: the global path
- * @cmd: the parsed command
- * @index: the command index
- * @oldpwd: the old path visited
- * @env: the environnment
+ * struct sh_dt - global ds
+ * @line: the line inp
+ * @ags: the ags token
+ * @errmg: the global paz
+ * @com: the parsed com
+ * @idd: the com idd
+ * @oldpwd: the old paz
+ * @envt: the envt
  *
- * Description: A structure contains all the variables needed to manage
- * the program, memory and accessability
  */
-typedef struct sh_data
+typedef struct sh_dt
 {
 	char *line;
-	char **args;
-	char *cmd;
-	char *error_msg;
+	char **ags;
+	char *com;
+	char *errmg;
 	char *oldpwd;
-	unsigned long int index;
-	char *env;
+	unsigned long int idd;
+	char *envt;
 } sh_t;
+
+
 /**
- * struct builtin - Manage the builtin functions
- * @cmd: the command line on string form
- * @f: the associated function
- *
- * Description: this struct made to manage builtins cmd
+ * struct bt_in - Manage the bt_in functions
+ * @com: the command line on string form
+ * @func: the associated function
  */
-typedef struct builtin
+typedef struct bt_in
 {
-	char *cmd;
-	int (*f)(sh_t *data);
+	char *com;
+	int (*func)(sh_t *dt);
 } blt_t;
-/* ----------Process prototype------------*/
-int read_line(sh_t *);
-int split_line(sh_t *);
-int parse_line(sh_t *);
-int process_cmd(sh_t *);
 
-/* ----------String prototype------------*/
-char *_strdup(char *str);
-char *_strcat(char *first, char *second);
-int _strlen(char *str);
-char *_strchr(char *str, char c);
-int _strcmp(char *s1, char *s2);
 
-/* ----------More String prototype-------*/
-char *_strcpy(char *dest, char *source);
+int re_ne(sh_t *);
+int sp_ne(sh_t *);
+int pa_ne(sh_t *);
+int p_md(sh_t *);
 
-/* ----------Memory prototype------------*/
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *_memset(char *s, char byt, unsigned int n);
-char *_memcpy(char *dest, char *src, unsigned int n);
-int free_data(sh_t *);
+char *ze_rep(char *sng);
+char *ze_conc(char *fs, char *se);
+int ze_siz(char *sng);
+char *ze_char(char *sng, char cze);
+int ze_comp(char *sn1, char *sn2);
 
-/* ----------Tools prototype-------------*/
-void *fill_an_array(void *a, int el, unsigned int len);
-void signal_handler(int signo);
-char *_getenv(char *path_name);
-void index_cmd(sh_t *data);
-void array_rev(char *arr, int len);
+char *ze_copy(char *dst, char *src);
 
-/* ----------More tools prototype--------*/
-char *_itoa(unsigned int n);
-int intlen(int num);
-int _atoi(char *c);
-int print_error(sh_t *data);
-int write_history(sh_t *data);
-int _isalpha(int c);
+void *ze_ralloc(void *pr, unsigned int osz, unsigned int nsz);
+char *ze_mmst(char *s, char bte, unsigned int numb);
+char *ze_mmcopy(char *dst, char *src, unsigned int numb);
+int ze_free(sh_t *);
 
-/* -------------Builtins-----------------*/
-int abort_prg(sh_t *data);
-int change_dir(sh_t *data);
-int display_help(sh_t *data);
-int handle_builtin(sh_t *data);
-int check_builtin(sh_t *data);
+void *fill_ds(void *apa, int elem, unsigned int sze);
+void sig_hand(int signo);
+char *ze_goev(char *pnme);
+void idx_c(sh_t *dt);
+void ds_v(char *arr, int sze);
 
-/* -------------Parse-----------------*/
-int is_path_form(sh_t *data);
-void is_short_form(sh_t *data);
-int is_builtin(sh_t *data);
+char *ze_arg(unsigned int numb);
+int sizint(int numb);
+int ze_it(char *cze);
+int perr(sh_t *dt);
+int wr_his(sh_t *dt);
+int ze_alche(int cze);
 
-#endif /* SHELL_H */
+int pazFm_c(sh_t *dt);
+void isfm(sh_t *dt);
+int isbtin(sh_t *dt);
+
+int ab_pg(sh_t *dt);
+int ze_cd(sh_t *dt);
+int hd_btin(sh_t *dt);
+int chk_btin(sh_t *dt);
+
+#endif
