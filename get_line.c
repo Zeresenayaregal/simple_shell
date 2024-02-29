@@ -53,14 +53,19 @@ char *buff = malloc(buffsize);
  */
 void hashtag_handle(char *buff)
 {
-	int i;
+    int i;
 
-		for (i = 0; buff[i] != '\0'; i++)
-		{
-			if (buff[i] == '#')
-			{
-			buff[i] = '\0';
-			break;
-			}
-	}
+    for (i = 0; buff[i] != '\0'; i++)
+    {
+        if (buff[i] == '#')
+        {
+            buff[i] = '\0';
+            break;
+        }
+    }
+
+    for (i--; i >= 0 && isspace(buff[i]); i--)
+    {
+        buff[i] = '\0';
+    }
 }

@@ -14,7 +14,6 @@ int handle_builtin(char **cmd, int er)
 		{"env", dis_env},
 		{"help", display_help},
 		{"echo", echo_bul},
-		{"history", history_dis},
 		{NULL, NULL}
 	};
 	int i = 0;

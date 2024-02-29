@@ -81,8 +81,6 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 /** ####BUL FUNC #####*/
 
 void hashtag_handle(char *buff);
-int history(char *input);
-int history_dis(char **cmd, int er);
 int dis_env(char **cmd, int er);
 int change_dir(char **cmd, int er);
 int display_help(char **cmd, int er);

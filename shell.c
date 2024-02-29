@@ -25,7 +25,6 @@ int main(__attribute__((unused)) int argc, char **argv)
 		{
 			continue;
 		}
-		history(input);
 		cmd = parse_cmd(input);
 		if (_strcmp(cmd[0], "exit") == 0)
 		{
@@ -58,7 +57,6 @@ int check_builtin(char **cmd)
 		{"cd", NULL},
 		{"help", NULL},
 		{"echo", NULL},
-		{"history", NULL},
 		{NULL, NULL}
 	};
 	int i = 0;
