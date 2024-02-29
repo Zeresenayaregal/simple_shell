@@ -23,7 +23,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	if (ptr == NULL)
 	{
-		fill_an_array(result, '\0', new_size);
+		fill_arrs(result, '\0', new_size);
 		free(ptr);
 	}
 	else
@@ -66,13 +66,13 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 /**
- * fill_an_array - Fill An Array By Constant Byte
+ * fill_arrs - Fill An Array By Constant Byte
  * @a:Void Pointer
  * @el: Int
  * @len:Length Int
  *Return: Void Pointer
  */
-void *fill_an_array(void *a, int el, unsigned int len)
+void *fill_arrs(void *a, int el, unsigned int len)
 {
 	char *p = a;
 	unsigned int i = 0;
